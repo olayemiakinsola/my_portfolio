@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olayemi Akinsola | Young Python Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(30, 58, 138, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
+        }
+        
+        .profile-card {
+            transition: all 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: scale(1.05);
+            border-color: #3b82f6;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        
+        .nav-scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(15, 23, 42, 0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="code-2" class="w-8 h-8 text-blue-500"></i>
+                    <span class="text-xl font-bold tracking-tight">Olayemi Akinsola</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">About</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">Projects</a>
+                    <a href="#profiles" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">Profiles</a>
+                    <a href="#achievements" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">Achievements</a>
+                    <a href="contact.html" class="btn-primary px-6 py-2 rounded-full font-semibold text-white">Contact Me</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-blue-400 transition-colors">Projects</a>
+                    <a href="#profiles" class="text-gray-300 hover:text-blue-400 transition-colors">Profiles</a>
+                    <a href="#achievements" class="text-gray-300 hover:text-blue-400 transition-colors">Achievements</a>
+                    <a href="#contact" class="text-blue-400 font-semibold">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #3b82f6 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <div class="animate-on-scroll mb-8">
+                    <div class="relative inline-block">
+                        <img src="yemi.jpeg" alt="Profile Photo" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-blue-500 shadow-2xl shadow-blue-500/30">
+                        <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-2">
+                            <i data-lucide="code" class="w-6 h-6 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll stagger-1 max-w-3xl">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent">
+                        Olayemi Akinsola
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-blue-400 font-semibold mb-6 tracking-wide">
+                        Young Python Programmer | Game Developer | Future Data Scientist
+                    </p>
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                        Passionate 15-year-old programmer crafting interactive experiences with Python. 
+                        Specializing in game development with Pygame and building game applications with Tkinter. 
+                        Hoping to explore the fascinating world of web development and then, data science.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="projects.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white flex items-center justify-center gap-2">
+                            <i data-lucide="folder-open" class="w-5 h-5"></i>
+                            View Projects
+                        </a>
+                        <a href="contact.html" class="btn-secondary px-8 py-3 rounded-full font-semibold text-blue-400 flex items-center justify-center gap-2">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-blue-400"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 sm:py-32 bg-slate-950">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="animate-on-scroll text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+                    <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll stagger-1">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">My Journey</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            I started my programming journey at age 13 when I decided to learn game development out of curiosity and passion. Playing my favorite games made me wonder how they were designed and built, and I wanted to understand the creative and technical process behind them.
+                        </p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            Currently, I'm diving deep into <span class="text-blue-400 font-semibold">Pygame</span> for 2D game development, creating everything from arcade classics to original puzzle games. I'm also building practical game applications using <span class="text-blue-400 font-semibold">Tkinter</span> to solve real-world problems.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            My next future goal is to add <span class="text-blue-400 font-semibold">Web development and Data science to my field of knowledge</span>—learning html, css, and javascript to build websites and then, pandas, matplotlib, and numpy to uncover insights from data and create compelling visualizations.
+                        </p>
+                    </div>
+                    
+                    <div class="animate-on-scroll stagger-2">
+                        <div class="glass-effect rounded-2xl p-6 sm:p-8">
+                            <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                                <i data-lucide="zap" class="w-5 h-5 text-blue-400"></i>
+                                Technical Skills
+                            </h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Python</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Pygame</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Tkinter</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Problem Solving</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Logical Thinking</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Game Development</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Beginner Data Science</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">HTML</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">CSS</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Javascript</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Git & GitHub</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Algorithms</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">OOP Concepts</span>
+                                <span class="skill-tag bg-blue-600/20 border border-blue-500/30 px-4 py-2 rounded-full text-blue-300 text-sm font-medium">Google Workspace</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 sm:py-32 bg-slate-900 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Explore my growing collection of Python applications and games</p>
+            </div>
+            
+            <!-- Pygame Projects -->
+            <div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <!-- Game 1 -->
+                    <div class="animate-on-scroll stagger-1 project-card glass-effect rounded-2xl overflow-hidden">
+                        <img src="stickman.PNG" alt="Space Shooter" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">Mr. Stickman</h4>
+                            <p class="text-gray-400 text-sm mb-4">It is a simple 2D platformer game where you play as a stick-figure secret agent trying to escape from a laboratory setting.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Tkinter</span>
+                                <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded">2D Platformer</span>
+                            </div>
+                            <div class="flex gap-2 flex-wrap">
+                                <a href="https://github.com/olayemiakinsola/stickman.git" class="flex-1 bg-slate-800 hover:bg-slate-700 text-center py-2 rounded-lg text-sm transition-colors flex items-center justify-center gap-1">
+                                    <i data-lucide="github" class="w-4 h-4"></i> Code
+                                </a>
+                                <a href="https://mrstickman--olayemiakinsola.replit.app/" class="flex-1 flex-1 bg-green-600 hover:bg-green-700 text-white text-center py-2 rounded-lg text-sm transition-colors flex items-center justify-center gap-1">
+                                    <i data-lucide="play" class="w-4 h-4"></i> Play
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game 2 -->
+                    <div class="animate-on-scroll stagger-3 project-card glass-effect rounded-2xl overflow-hidden">
+                        <img src="bounce.PNG" alt="Bounce Game" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2">Bounce Game</h4>
+                            <p class="text-gray-400 text-sm mb-4">It is typically a simple arcade-style 2D paddle-and-ball game where the player controls a paddle to keep a ball bouncing and prevent it from falling off the bottom of the screen.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Tkinter</span>
+                                <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Casual Action Game</span>
+                            </div>
+                            <div class="flex gap-2 flex-wrap">
+                                <a href="https://github.com/olayemiakinsola/bounce.git" class="flex-1 bg-slate-800 hover:bg-slate-700 text-center py-2 rounded-lg text-sm transition-colors flex items-center justify-center gap-1">
+                                    <i data-lucide="github" class="w-4 h-4"></i> Code
+                                </a>
+                                <a href="https://bounce--olayemiakinsola.replit.app/" class="flex-1 bg-green-600 hover:bg-green-700 text-white text-center py-2 rounded-lg text-sm transition-colors flex items-center justify-center gap-1">
+                                    <i data-lucide="play" class="w-4 h-4"></i> Play
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                   <div class="flex sm:flex-col sm:flex-row gap-4 justify-center">
+                        <a href="projects.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white flex items-center justify-center gap-2">
+                            <i data-lucide="folder-open" class="w-5 h-5"></i>
+                            View more Projects
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coding Profiles Section -->
+    <section id="profiles" class="py-20 sm:py-32 bg-slate-950">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">My Coding Profiles</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Connect with me on these platforms</p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 max-w-5xl mx-auto">
+                <a href="https://github.com/olayemiakinsola" class="animate-on-scroll stagger-1 profile-card glass-effect rounded-2xl p-6 flex flex-col items-center text-center group">
+                    <i data-lucide="github" class="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 group-hover:text-white mb-3 transition-colors"></i>
+                    <h4 class="font-semibold text-sm sm:text-base mb-1">GitHub</h4>
+                    <p class="text-xs text-gray-400">View my code repositories and open source contributions</p>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1m_Mwg95pjeyGaTgjnYOYJ1rStgMXR_2D" class="animate-on-scroll stagger-2 profile-card glass-effect rounded-2xl p-6 flex flex-col items-center text-center group">
+                    <i data-lucide="hard-drive" class="w-10 h-10 sm:w-12 sm:h-12 text-green-400 group-hover:text-green-300 mb-3 transition-colors"></i>
+                    <h4 class="font-semibold text-sm sm:text-base mb-1">Google Drive</h4>
+                    <p class="text-xs text-gray-400">Access my project files, documentation and resources</p>
+                </a>
+
+                <a href="https://replit.com/@olayemiakinsola" class="animate-on-scroll stagger-3 profile-card glass-effect rounded-2xl p-6 flex flex-col items-center text-center group">
+                    <i data-lucide="terminal" class="w-10 h-10 sm:w-12 sm:h-12 text-blue-400 group-hover:text-blue-300 mb-3 transition-colors"></i>
+                    <h4 class="font-semibold text-sm sm:text-base mb-1">Replit</h4>
+                    <p class="text-xs text-gray-400">Try my projects instantly in the browser</p>
+                </a>
+
+                <a href="#" class="animate-on-scroll stagger-1 profile-card glass-effect rounded-2xl p-6 flex flex-col items-center text-center group">
+                    <i data-lucide="linkedin" class="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 group-hover:text-blue-500 mb-3 transition-colors"></i>
+                    <h4 class="font-semibold text-sm sm:text-base mb-1">LinkedIn</h4>
+                    <p class="text-xs text-gray-400">Professional network and career updates</p>
+                </a>
+
+                <a href="https://t.me/Yemost" class="animate-on-scroll stagger-2 profile-card glass-effect rounded-2xl p-6 flex flex-col items-center text-center group">
+                    <i data-lucide="send" class="w-10 h-10 sm:w-12 sm:h-12 text-blue-400 group-hover:text-blue-300 mb-3 transition-colors"></i>
+                    <h4 class="font-semibold text-sm sm:text-base mb-1">Telegram</h4>
+                    <p class="text-xs text-gray-400">Quick messaging and project updates</p>
+                </a>
+
+                <a href="#" class="animate-on-scroll stagger-3 profile-card glass-effect rounded-2xl p-6 flex flex-col items-center text-center group">
+                    <i data-lucide="instagram" class="w-10 h-10 sm:w-12 sm:h-12 text-pink-400 group-hover:text-pink-300 mb-3 transition-colors"></i>
+                    <h4 class="font-semibold text-sm sm:text-base mb-1">Instagram</h4>
+                    <p class="text-xs text-gray-400">Behind the scenes of my coding journey</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 sm:py-32 bg-slate-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Achievements</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Milestones and certifications on my learning journey</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="animate-on-scroll stagger-1 achievement-card rounded-2xl p-6 border border-blue-500/20">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="award" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Python Beginners Certified</h4>
+                    <p class="text-sm text-gray-400 mb-3">Python Basics Certified Programmer</p>
+                    <span class="text-xs text-blue-400 font-semibold">2025</span>
+                </div>
+
+                <div class="animate-on-scroll stagger-2 achievement-card rounded-2xl p-6 border border-blue-500/20">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="trophy" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Python Intermediate Certified</h4>
+                    <p class="text-sm text-gray-400 mb-3">Python Intermediate - Game Development with Tkinter Cerified</p>
+                    <span class="text-xs text-blue-400 font-semibold">2026</span>
+                </div>
+
+                <div class="animate-on-scroll stagger-3 achievement-card rounded-2xl p-6 border border-blue-500/20">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="star" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Python Intermediate Certified</h4>
+                    <p class="text-sm text-gray-400 mb-3">Python Advanced - Game Development with Pygame Cerified</p>
+                    <span class="text-xs text-blue-400 font-semibold">2026</span>
+                </div>
+
+                <div class="animate-on-scroll stagger-4 achievement-card rounded-2xl p-6 border border-blue-500/20">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="book-open" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Web  Certificate</h4>
+                    <p class="text-sm text-gray-400 mb-3">Intermediate Data Science & Analysis with Python</p>
+                    <span class="text-xs text-blue-400 font-semibold">2027</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 sm:py-32 gradient-bg relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="animate-on-scroll mb-8">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Let's Work Together</h2>
+                    <p class="text-gray-300 text-lg">Have a project in mind or want to collaborate? I'd love to hear from you!</p>
+                </div>
+                
+                <div class="flex sm:flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html" class="btn-primary px-8 py-3 rounded-full font-semibold text-white flex items-center justify-center gap-2">
+                            <i data-lucide="folder-open" class="w-5 h-5"></i>
+                            Send me a Message
+                        </a>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-blue-500/20 py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="code-2" class="w-6 h-6 text-blue-500"></i>
+                    <span class="font-semibold">Olayemi Akinsola</span>
+                </div>
+                <p class="text-gray-500 text-sm">© 2026 FJ CodeSprout Academy. We build, We develop, We coach, We mentor.</p>
+                <div class="flex gap-4">
+                    <a href="https://github.com/olayemiakinsola" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Sticky navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
